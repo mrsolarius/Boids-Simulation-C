@@ -34,7 +34,7 @@ void BoidsManager::step(unsigned int step) {
     }
 }
 
-void BoidsManager::drawAllegro() {
+void BoidsManager::drawBoids() {
     for (auto &e: this->entities) {
         e.drawBoid();
     }

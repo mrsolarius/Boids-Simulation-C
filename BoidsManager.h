@@ -16,7 +16,7 @@ class BoidsManager {
 public:
     BoidsManager(int gNbEntities, int gWidth, int gHeight);
     void step(unsigned int step);
-    void drawAllegro();
+    void drawBoids();
 private:
     void generateEntity();
 };

@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.15)
-project(MiniCrowd)
+project(Fouloscopie_Louis_VOLAT)
 
 set(CMAKE_CXX_STANDARD 14)
 #set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "-g -O0 -Wall -Wextra")
 
 
-add_executable(miniCrowd main.cpp)
+add_executable(Fouloscopie_Louis_VOLAT main.cpp main.cpp AllegroManager.cpp AllegroManager.h BoidsManager.cpp BoidsManager.h Boid.cpp Boid.h)
 
 if(UNIX)
    find_library(LIBALLEGRO allegro)
    find_library(LIBALLEGRO_PRIMITIVES allegro_primitives)
-   target_link_libraries(miniCrowd ${LIBALLEGRO} ${LIBALLEGRO_PRIMITIVES})
+   target_link_libraries(Fouloscopie_Louis_VOLAT ${LIBALLEGRO} ${LIBALLEGRO_PRIMITIVES})
 endif(UNIX)
 
 # Attempt at configuring Allegro for MinGW, not tested...

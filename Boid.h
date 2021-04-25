@@ -15,16 +15,14 @@ class Boid {
     double velocity, direction;
     int size;
     int detectionBox;
-    int hasTouch{};
     ALLEGRO_COLOR color{};
 
 public:
-    Boid(std::vector<double> startPos, double velocity, int size, double direction, int detectionBox,
-         ALLEGRO_COLOR col);
+    Boid(std::vector<double> startPos, double velocity, int size, double direction, int detectionBox, ALLEGRO_COLOR col);
 
-    void step(unsigned int gStep, vector <vector<double>> oderEntity, int gWidth, int gHeight);
+    void step(unsigned int step, vector<vector<double>> boidSee, int screenWidth, int screenHeight);
 
-    void drawAllegro();
+    void drawBoid();
 
     bool isDetected(std::vector<double> pos);
 
