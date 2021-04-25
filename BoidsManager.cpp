@@ -45,6 +45,7 @@ void BoidsManager::drawBoids() {
 
 void BoidsManager::generateBoid() {
     currentBoids++;
+    printf("%i\n",currentBoids);
     //Génération des Boid au centre de l'écran
     int x = screenWidth / 2;
     int y = screenHeight / 2;
