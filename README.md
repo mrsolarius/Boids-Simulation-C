@@ -12,7 +12,7 @@ Tentative de mise en place d'une simulation de boids. Cette simulation vise à r
 
 La tentative n'est que partiellement réussie car la mise à jour de l'angle ne se fait que en fonction du boid le plus proche détecter et non pas en fonction de tous les boids détecter.
 
-*Note : chez moi la simulation arrive à correctement gérer 1000 boild au delà sa commence à ralentire* 
+*Note : chez moi la simulation arrive à correctement gérer 1000 boid au delà sa commence à ralentire* 
 ### Légende :
 
 * boid bleu : Aucun comportement sociaux c'est déplacement sont aléatoire
