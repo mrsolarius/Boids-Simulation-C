@@ -1,0 +1,14 @@
+//
+// Created by louis on 06/04/2021.
+//
+
+#ifndef FOULOSCOPIE_LOUIS_VOLAT_ALLEGROMANAGER_H
+#define FOULOSCOPIE_LOUIS_VOLAT_ALLEGROMANAGER_H
+
+
+class AllegroManager {
+
+};
+
+
+#endif //FOULOSCOPIE_LOUIS_VOLAT_ALLEGROMANAGER_H
