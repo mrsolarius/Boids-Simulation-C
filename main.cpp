@@ -21,9 +21,9 @@ int main(int argc, char **argv) {
 
     auto allegroManager = new AllegroManager(displayWindows, displayWidth, displayHeight);
 
-    BoidsManager entitiesManager(totalEntities, displayWidth, displayHeight);
+    BoidsManager boidsManager(totalEntities, displayWidth, displayHeight);
 
-    allegroManager->launch(keyboardState, 0, entitiesManager);
+    allegroManager->launch(keyboardState, 0, boidsManager);
 
     al_destroy_display(displayWindows);
     al_shutdown_primitives_addon();
