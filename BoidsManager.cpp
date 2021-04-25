@@ -8,49 +8,50 @@
 #include <allegro5/allegro.h>
 #include <cmath>
 
-BoidsManager::BoidsManager(int totalEntities, int screenWidth, int screenHeight) {
+BoidsManager::BoidsManager(int totalBoids, int screenWidth, int screenHeight) {
     this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
-    this->totalEntities = totalEntities;
-    this->currentEntities = 0;
+    this->totalBoids = totalBoids;
+    this->currentBoids = 0;
     generateEntity();
 }
 
 void BoidsManager::step(unsigned int step) {
-    if (this->currentEntities < this->totalEntities) {
+    if (this->currentBoids < this->totalBoids && step%2==1) {
         this->generateEntity();
-        printf("%i\n", this->currentEntities);
+        printf("%i\n", this->currentBoids);
     }
-    for (int i = 0; i < (int) this->entities.size(); i++) {
+    for (int i = 0; i < (int) this->boids.size(); i++) {
 
-        std::vector<std::vector<double>> boidDetected = {};
-        for (int j = 0; j < (int) this->entities.size(); j++) {
-            if (i != j && this->entities[i].isDetected(this->entities[j].getPositionAndDirection())) {
-                boidDetected.push_back(this->entities[j].getPositionAndDirection());
+        std::vector<Vectors> boidsDetected = {};
+        for (int j = 0; j < (int) this->boids.size(); j++) {
+            if (i != j && this->boids[i].isDetected(this->boids[j].getPositionAndDirection())) {
+                boidsDetected.push_back(this->boids[j].getPositionAndDirection());
             }
         }
 
-        this->entities[i].step(step, boidDetected, this->screenWidth, this->screenHeight);
+        this->boids[i].step(step, boidsDetected, this->screenWidth, this->screenHeight);
     }
 }
 
 void BoidsManager::drawBoids() {
-    for (auto &e: this->entities) {
+    for (auto &e: this->boids) {
         e.drawBoid();
     }
 }
 
 void BoidsManager::generateEntity() {
-    currentEntities++;
+    currentBoids++;
     int x = screenWidth / 2;
     int y = screenHeight / 2;
-    double angle = std::fmod(rand(), ((M_PI * 2 - 0) + 1) + 0);
-
-    this->entities.push_back(Boid({static_cast<double>(x), static_cast<double>(y)},
-                                  3,
-                                  5,
-                                  angle,
-                                  20,
-                                  al_map_rgba(0, 0, 255, 150)));
+    double angle = (((double) rand() / RAND_MAX) * M_PI * 2) - M_PI;
+    printf("angle : %f",angle);
+    Vectors vectors;
+    vectors.setAll(x,y,angle);
+    this->boids.push_back(Boid(vectors,
+                               3,
+                               5,
+                               20,
+                               al_map_rgba(0, 0, 255, 150)));
 }
 

@@ -7,29 +7,32 @@
 
 #include <vector>
 #include <allegro5/allegro_primitives.h>
+#include "Vectors.h"
 
 using std::vector;
 
 class Boid {
-    std::vector<double> position;
+    Vectors position;
     double velocity, direction;
     int size;
     int detectionBox;
     ALLEGRO_COLOR color{};
 
 public:
-    Boid(std::vector<double> startPos, double velocity, int size, double direction, int detectionBox, ALLEGRO_COLOR col);
+    Boid(Vectors startPos, double velocity, int size, int detectionBox, ALLEGRO_COLOR col);
 
-    void step(unsigned int step, vector<vector<double>> boidSee, int screenWidth, int screenHeight);
+    void step(unsigned int step, vector<Vectors> boidsSee, int screenWidth, int screenHeight);
 
     void drawBoid();
 
-    bool isDetected(std::vector<double> pos);
+    bool isDetected(Vectors pos);
 
-    std::vector<double> getPositionAndDirection();
+    Vectors getPositionAndDirection();
 
 private:
     void changeDirection(double angle);
+
+    void randomDirectionChange();
 };
 
 

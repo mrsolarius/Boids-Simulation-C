@@ -8,13 +8,18 @@
 #include "Boid.h"
 
 class BoidsManager {
-    int totalEntities;
-    int currentEntities;
+    //Nombre totale d'oisoïde demander
+    int totalBoids;
+    //Nombre acutel d'oisoïde
+    int currentBoids;
+    //Collection d'oisoïde
+    std::vector<Boid> boids;
+
+    //Taille de l'écran
     int screenWidth;
     int screenHeight;
-    std::vector<Boid> entities;
 public:
-    BoidsManager(int gNbEntities, int gWidth, int gHeight);
+    BoidsManager(int totalBoids, int gWidth, int gHeight);
     void step(unsigned int step);
     void drawBoids();
 private:

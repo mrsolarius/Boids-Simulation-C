@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "-g -O0 -Wall -Wextra")
 
 
-add_executable(Fouloscopie_Louis_VOLAT main.cpp main.cpp AllegroManager.cpp AllegroManager.h BoidsManager.cpp BoidsManager.h Boid.cpp Boid.h)
+add_executable(Fouloscopie_Louis_VOLAT main.cpp main.cpp AllegroManager.cpp AllegroManager.h BoidsManager.cpp BoidsManager.h Boid.cpp Boid.h Vectors.cpp Vectors.h)
 
 if(UNIX)
    find_library(LIBALLEGRO allegro)
