@@ -5,7 +5,9 @@
 #include "AllegroManager.h"
 
 
-AllegroManager::AllegroManager(ALLEGRO_DISPLAY *gDisplay, int gWidth, int gHeight) {
+AllegroManager::AllegroManager(ALLEGRO_DISPLAY *windows, int screenWidth, int screenHeight) {
+
+    //Gestion des possible de alegros à l'inisialisation
     if(!al_init()) {
         this->crashOnError("failed to initialize allegro!");
     }
@@ -16,9 +18,10 @@ AllegroManager::AllegroManager(ALLEGRO_DISPLAY *gDisplay, int gWidth, int gHeigh
 
     al_set_new_display_flags(ALLEGRO_OPENGL_3_0);
 
-    gDisplay = al_create_display(gWidth, gHeight);
+    //Création de la fenêtres
+    windows = al_create_display(screenWidth, screenHeight);
 
-    if(!gDisplay) {
+    if(!windows) {
         this->crashOnError("failed to initialize allegro display!");
     }
 
@@ -31,31 +34,32 @@ AllegroManager::AllegroManager(ALLEGRO_DISPLAY *gDisplay, int gWidth, int gHeigh
     }
 }
 
-void AllegroManager::launch(ALLEGRO_KEYBOARD_STATE gKbdstate, unsigned int gStep, BoidsManager entitiesManager) {
+void AllegroManager::mainLoop(ALLEGRO_KEYBOARD_STATE keyboardState, BoidsManager boidsManager) {
+    unsigned short currentStep = 0;
     while (true) {
         // Récupération des évenements clavier
-        al_get_keyboard_state(&gKbdstate);
+        al_get_keyboard_state(&keyboardState);
 
         // Sortie si Esc.
-        if (al_key_down(&gKbdstate, ALLEGRO_KEY_ESCAPE)) {
+        if (al_key_down(&keyboardState, ALLEGRO_KEY_ESCAPE)) {
             return;
         }
 
-        // Comportement des individus
-        entitiesManager.step(gStep);
+        // Comportement des boids
+        boidsManager.step(currentStep);
 
         // On efface tout (dans le backbuffer)
-        al_clear_to_color(al_map_rgb(250, 250, 250));
+        al_clear_to_color(al_map_rgb(0, 0, 0));
 
-        // Dessin des individus (dans le backbuffer)
-        entitiesManager.drawBoids();
+        // Dessin des boids (dans le backbuffer)
+        boidsManager.drawBoids();
 
         // On affiche le backbuffer
         al_flip_display();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-        gStep++;
+        currentStep++;
     }
 }
 

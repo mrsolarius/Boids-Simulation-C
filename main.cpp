@@ -12,8 +12,8 @@ using namespace std;
 
 //inisialisation des paramètre de simulation
 int displayWidth = 1920;
-int displayHeight = 800;
-int totalEntities = 10;
+int displayHeight = 900;
+int totalEntities = 150;
 
 ALLEGRO_KEYBOARD_STATE keyboardState;
 ALLEGRO_DISPLAY* displayWindows = nullptr;
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     BoidsManager boidsManager(totalEntities, displayWidth, displayHeight);
 
     //Démarage de la boucle de simulation
-    allegroManager->launch(keyboardState, 0, boidsManager);
+    allegroManager->mainLoop(keyboardState, boidsManager);
 
     //Si la boucle et couper on ferme la fenetre et le programe
     al_destroy_display(displayWindows);

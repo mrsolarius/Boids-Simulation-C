@@ -16,9 +16,24 @@ using namespace std;
 
 class AllegroManager {
 public:
-    AllegroManager(ALLEGRO_DISPLAY* gDisplay, int gWidth, int gHeight);
-    void launch(ALLEGRO_KEYBOARD_STATE gKbdstate, unsigned int gStep, BoidsManager entitiesManager);
+    /**
+     * Constructeur
+     * @param windows ALLEGRO_DISPLAY*
+     * @param screenWidth largeur de la fenêtre en px
+     * @param screenHeight hauteur de la fenêtre en px
+     */
+    AllegroManager(ALLEGRO_DISPLAY* windows, int screenWidth, int screenHeight);
+    /**
+     * Boucle principal
+     * @param keyboardState ALLEGRO_KEYBOARD_STATE
+     * @param boidsManager objet de gestion des boids
+     */
+    void mainLoop(ALLEGRO_KEYBOARD_STATE keyboardState, BoidsManager boidsManager);
 private:
+    /**
+     * Fonction de crash
+     * @param message
+     */
     void crashOnError(std::string message);
 };
 
